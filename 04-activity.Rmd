@@ -1,0 +1,180 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+urlcolor: blue
+---
+
+# Class Activity  
+  
+## Learning Objective   
+  
+------------
+
+>
+> * Demonstrate how to download biodiversity data through an Application Programming Interface. 
+> * Plot occurrence data on a simple map.
+
+------------
+
+## Background information
+
+### iDigBio  
+iDigBio, or the Integrated Digitized Biocollections, is a biodiversity aggregator. It currently holds over 125 million specimen records and over 40 million media records. 
+```{r echo=FALSE, fig.align = 'center', fig.width=5, out.width = '70%'}
+knitr::include_graphics(rep('img/idigbio.png'))
+```
+These specimen include mostly plants and animals. While media records include mostly plant specimen.
+```{r echo=FALSE, fig.align = 'center', fig.width=5, out.width = '70%'}
+knitr::include_graphics(rep('img/idigbio2.png'))
+```
+Here is an example of a plant media record:
+```{r echo=FALSE, fig.align = 'center', fig.width=5, out.width = '70%'}
+knitr::include_graphics(rep('img/spartina_idigbio.jpg'))
+```
+#### Application Programming Interface  
+An API, or Application Programming Interface, allows a user to interact with a system that contains data. In this case, we are interacting with iDigBio, a biodiversity data aggregator. Even when we use the web portal for iDigBio, we are still interacting with the API. Here we will learn how to interact with the iDigBio API using R.  
+```{r echo=FALSE, fig.align = 'center', fig.width=5, out.width = '70%'}
+knitr::include_graphics(rep('img/API.jpg'))
+```
+
+#### *Spartina alterniflora*    
+
+*Spartina alterniflora*, smooth cordgrass, grows along shorelines throughout both the Atlantic and Gulf coasts of North America. In its native range, it is used in ecosystem restoration due to its extensive rooting capabilities. 
+
+```{r echo=FALSE, fig.align = 'center', fig.width=4, out.width = '50%'}
+knitr::include_graphics(rep('img/spartina.jpeg'))
+```
+
+## Downloading Data
+
+### Set up your R project and R script {.unnumbered}
+
+1.  Open a new R project and name it "DataDownloading"
+2.  Within your R project, create an R script titled "DataDownloading.R"
+
+### DataDownloading.R {.unnumbered}
+
+### Install Packages {.unnumbered}
+Do not include this in your R script! It is better to write this in the console than in our script for any package, as there's no need to re-install packages every time we run the scrip
+```{r eval=FALSE, include=TRUE}
+install.packages(c("tidyverse", "ridigbio"))
+```
+
+The rest should be included in the script.    
+
+### Load Packages {.unnumbered}
+```{r}
+library(ridigbio)
+library(ggplot2)
+```
+
+### Data download from iDigBio {.unnumbered}
+Here we use the <kbd>idig_search_records</kbd> function and the rq, or record query, indicates we want to download all the records where the <kbd>scientificname</kbd> is equal to *Spartina alterniflora*, or smooth cord grass. 
+```{r}
+iDigBio_SA <- idig_search_records(rq=list(scientificname="Spartina alterniflora"))
+```
+
+### Inspect the downloaded records {.unnumbered}
+**How many observations are in this record set?**  
+To determine this, we can use the <kbd>nrow</kbd> function to see the **n**umber of **row**s this data frame includes. 
+```{r}
+nrow(iDigBio_SA)
+```
+
+**How many columns does this data frame include?**  
+To determine this, we can use the <kbd>ncol</kbd> function to see the **n**umber of **col**umns this data frame includes. 
+```{r}
+ncol(iDigBio_SA)
+```
+**What columns does this data frame include?**   
+To print the **col**umns **names**, we can use the <kbd>colname</kbd> function. 
+```{r}
+colnames(iDigBio_SA)
+```
+Based on [Darwin Core Standards](https://dwc.tdwg.org/), we know what each of these columns means.  
+
+| Column | Description |
+| ----------- | ----------- |
+| uuid | Universally Unique IDentifier, https://tools.ietf.org/html/rfc4122 |
+| occurrenceid |identifier for the occurrence, 	http://rs.tdwg.org/dwc/terms/occurrenceID| 
+| catalognumber |identifier for the record within the collection, http://rs.tdwg.org/dwc/terms/catalogNumber|
+| family | scientific name of the family, http://rs.tdwg.org/dwc/terms/family|
+| genus | scientific name of the genus, http://rs.tdwg.org/dwc/terms/genus |
+| scientificname | scientific name, http://rs.tdwg.org/dwc/terms/scientificName |
+| country | country, 	http://rs.tdwg.org/dwc/terms/country |
+| stateprovince |name of the next smaller administrative region than country, http://rs.tdwg.org/dwc/terms/stateProvince|
+| geopoint.lon | equivalent to decimalLongitude, 	http://rs.tdwg.org/dwc/terms/decimalLongitude|
+| geopoint.lat | equivalent to decimalLatitude,http://rs.tdwg.org/dwc/terms/decimalLatitude |
+| datecollected | equivalent to eventDate, https://dwc.tdwg.org/terms/#dwc:eventDate) |
+| collector | equivalent to recordedBy,	http://rs.tdwg.org/dwc/terms/recordedBy |
+| recordset | indicates the iDigBio recordset the observation belongs too|
+
+### Plot the records  {.unnumbered}
+Now that we have inspected the data frame, let's plot the records. We will use <kbd>ggplot2</kbd> to create a simple plot.   
+
+First, we need to download a basemap to plot our points on. Here I download a world map that is outlined and filled with the shade "gray50" using the function <kbd>borders</kbd> which is from the package <kbd>ggplot2</kbd>.   
+```{r}
+world <- borders(database = "world", colour = "gray50", fill = "gray50")
+```
+
+
+Next, we are going to create a plot using the base map. We will add the points from the <kbd>iDigBio_SA</kbd> data frame using the  <kbd>geom_point</kbd> function. For ggplot2, you have to indicate mapping aesthetics or <kbd> mapping = aes()</kbd>. Within this statement we include <kbd> x = geopoint.lon, y = geopoint.lat) </kdb> to indicate that the x coordinate should be the column containig longitude (geopoint.lon), and the y coordinate should be the column containing latitude (geopoint.lat). Finally, we indicate we want these points to be blue, or <kdb> col = "Blue" </kdb>.   
+```{r message=FALSE, warning=FALSE, fig.align = 'center', fig.width=6}
+all_plot <- ggplot() +
+            world +
+            geom_point(iDigBio_SA, 
+                       mapping = aes(x = geopoint.lon, y = geopoint.lat), 
+                       col = "Blue")
+all_plot
+```
+  
+When you plot the occurrence records downloaded, you will notice points outside of the native range! *Spartina alterniflora* is very invasive in California and other parts of the world. 
+
+**Save as a jpg**: To save your map as an image file, you can easily run the following lines.
+```{r message=FALSE, warning=FALSE, eval=FALSE, echo=TRUE}
+jpeg(file="map_spartina.jpeg")
+all_plot
+dev.off()
+```
+
+
+## Limiting the extent
+What if you want to only download points for the species within the native extent? Then we would need to define a bounding box to restrict our query (as coded by <kdb>rq</kdb>) too. 
+  
+Hint: Use the [iDigBio portal](https://www.idigbio.org/portal/search) to determine the coordinates for the corners of the bounding box of your region of interest.  
+```{r echo=FALSE, fig.align = 'center', fig.width=5, out.width = '70%'}
+knitr::include_graphics(rep('img/BoundingBox2.png'))
+```
+
+### Set the search criteria {.unnumbered}
+Here we will redefine the rq, or record query, to include a <kbd>geo_bounding_box</kbd> based on the iDigBio webportal - I limited the extent only to the native range.
+
+```{r}
+rq_input <- list("scientificname"="Spartina alterniflora",
+                 geopoint=list( type="geo_bounding_box",
+                                top_left=list(lon = -102.33, lat = 46.64),
+                                bottom_right=list(lon = -55.33, lat = 20.43) ) )
+```
+
+```{r}
+iDigBio_SA_limited <- idig_search_records(rq=rq_input)
+```
+
+### Plot the records {.unnumbered}
+Similar to before, we will use <kbd>ggplot2</kbd> to plot our points. These records only include points within the desired extent!
+
+Since the native range is only in the USA, I downloaded a USA map that is outlined and filled with the shade "gray50" using the function <kbd>borders</kbd> which is from the package <kbd>ggplot2</kbd>.  
+```{r message=FALSE, warning=FALSE, fig.align = 'center', fig.width=5}
+USA <- borders(database = "usa", colour = "gray50", fill = "gray50") 
+limited_plot <- ggplot() +
+                USA +
+                geom_point(iDigBio_SA,
+                           mapping = aes(x = geopoint.lon, y = geopoint.lat), 
+                           col = "Blue") +
+                coord_map(xlim = c(-60,-105), ylim = c(20, 50))
+            
+limited_plot
+```
+
+**Congrats! You have made it through all the activities, you should now be able to answer all the questions in the assessment!** 

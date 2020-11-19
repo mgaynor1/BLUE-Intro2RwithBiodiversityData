@@ -1,0 +1,286 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+urlcolor: blue
+header-include:
+  - \usepackage{xcolor}
+  - \usepackage{framed}
+---
+
+# Pre-Activity
+
+In this pre-activity, we will go over some R Basics. At the end of this chapter, you will write your first R script!
+
+## Learning objective
+
+------------------------------------------------------------------------
+
+>
+> * Define objects, operators, functions, and R packages.
+> * Use the built-in RStudio help interface to search for more information on R functions.
+> * Run commands in the console and from a script.
+> * Demonstrate how to provide sufficient information for troubleshooting with the R user community.
+> * Be able to write R scripts in a reproducible manner.
+>
+
+------------------------------------------------------------------------
+
+## R Scripts
+
+-   Below we summarize some R basics, but to find out more about [R Scripts](https://support.rstudio.com/hc/en-us/articles/200484448-Editing-and-Executing-Code) please review the link for some tips about:
+
+    -   Code Completion
+
+    -   Find and Replace
+
+    -   Extract Function
+
+    -   Comment/Uncomment
+
+    -   Executing Code
+
+To open your first <kbd>.R file</kbd> or R Script, click the paper logo with the green plus sign OR <kbd>"File"</kbd> -\> <kbd>"New File"</kbd> -\> <kbd>"R Script"</kbd>.
+
+```{r echo=FALSE, fig.align = 'center', fig.width=3}
+knitr::include_graphics(rep('img/Rscript.png'))
+```
+
+R Scripts are used to document the code you use in your project. These scripts can be used as a reference for yourself and allow others to reproduce your analysis. Learn more about running code from R Scripts in section 3.4.
+
+------------------------------------------------------------------------
+>
+> **Naming R Scripts**\
+>
+> -   Make sure you R Scripts file names are meaningful and end in .R.
+>
+> -   Avoid using special characters in file names. Instead use numbers, letters, dashes (-), and underscores (\_).
+>
+> -   If files should be run in a particular order, prefix them with numbers. For example, 01\_setup.R.
+>
+
+------------------------------------------------------------------------
+
+## Important Terms
+
+```{r echo=FALSE, fig.align = 'center'}
+knitr::include_graphics(rep('img/definitions.png'))
+```
+
+[**object**](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects)**:** is what data is stored in your R environment. In the R programming language, this term is interchangeable with **variable**.
+
+-   Objects will have [**classes**](http://www.diegobarneche.com/2014-12-11-ufsc/lessons/01-intro_r/data-structures.html) (eg. numeric, character, factor, logical)
+
+```{r}
+weight <- 3
+class(weight)
+```
+
+[**operator**](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Syntax.html): assignment operators assign a value to an object. Assignment operators may be a back arrow <kbd>\<-</kbd> or an equal sign <kbd>=</kbd>.
+
+-   Quick operator: For PC users, typing <kbd>Alt</kbd> + <kbd>-</kbd> (push the keys at the same time) will write `<-`. On a Mac, typing <kbd>Option</kbd> + <kbd>-</kbd> (push the keys at the same time) does the same.
+
+[**command**](https://personality-project.org/r/r.commands.html): the complete line shown above can be called a command, here an object is assigned a value. This value can be directly assigned (eg. <kbd>x \<- 10</kbd>) or calculated through a function (see above).
+
+[**function**](%22https://www.tutorialspoint.com/r/r_functions.htm%22): a function is a set of processes that you can apply to an object or group of variables. .
+
+R has base functions, or functions that come with it, like round:
+
+```{r}
+weight <- 3.4759875
+round(weight)
+```
+
+If you need help with a specific function, let's say plot(), you can type:
+
+```{r}
+?plot
+```
+
+You can also write your own functions. For example, if we have a weight in kilograms that we want to convert to pounds and we want to round the converted weight, we could write are own function to do this. Here the function we made is called <kbd>convertkg2lb</kbd>, this function will first convert kg to lb, then round this value, and finally return the rounded weight in lb. .
+
+```{r}
+convertkg2lb <- function(weightkg){
+  weightlb <- weightkg*2.20462
+  rounded_weightlb <- round(weightlb)
+  return(rounded_weightlb)
+}
+
+weight <- 3.4759875
+convertkg2lb(weight)
+```
+
+This function may not be very useful to write when we only have one weight to convert, however if you need to convert and round 100 weights, you can reduce the number of lines of codes in half by using a function.
+
+[**R package**](https://www.datacamp.com/community/tutorials/r-packages-guide): is a group of functions. Offical R packages are avaliable via [CRAN](https://cran.r-project.org/). For the class activity, we will be using packages from [Tidyverse](https://www.tidyverse.org/).
+
+## Running Code
+
+You can type commands directly into the console and press `Enter` to execute those commands. Sadly, commands run in the console will be forgotten when you close the session.
+
+To document your code and allow for reproducibility, it is better to type the commands we want in the script editor, and save the script. RStudio allows you to execute commands directly from the script editor by using on PC the <kbd>`Ctrl`</kbd> + <kbd>`Enter`</kbd> shortcut, and on Macs, <kbd>`Cmd`</kbd> + <kbd>`Return`</kbd>.
+
+Individual lines of code can also be run by clicking the "Run" button or you can run the whole script by clicking "Source".
+
+```{r echo=FALSE, fig.align = 'center', fig.width=3}
+knitr::include_graphics(rep('img/Running.png'))
+```
+
+You can find other keyboard shortcuts in this [RStudio cheatsheet about the RStudio IDE](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf).
+
+## Basic Troubleshooting
+ 
+------------ 
+   
+> ### 1. Read the error message {.unnumbered}
+>   
+> * For example, if your message reads "incorrect field specification", check the function (<kbd>?function</kbd>) to make sure you specified the correct variables.
+>   
+
+------------
+
+------------
+   
+> ### 2. Google the error message {.unnumbered}
+>
+> -   Sometimes the error message will be confusing and reading it will not provide any insight. This is when google is helpful!
+> -   If your error message is super generic, also include the name of the function or package when googling.
+>     
+
+------------
+
+
+------------
+
+> ### 3. Ask for help {.unnumbered}
+>    
+> -   If google did not answer your question, the next step would be to ask your classmates and/or instructor for help.
+> -   Include the sessionInfo() - which prints the version of R, the packages loaded, and other useful information.
+>    
+
+------------
+
+
+### Where to ask for help? {.unnumbered}
+
+-   First start by ask your classmates and instructor.
+
+-   [Stack Overflow](https://stackoverflow.com/questions/tagged/r?tab=Votes): Check out this awesome blog post on ["How do I ask a good question?"](https://stackoverflow.com/help/how-to-ask) before posting.
+
+-   [How to ask for R help](https://blog.revolutionanalytics.com/2014/01/how-to-ask-for-r-help.html): Make sure you are asking good questions!
+
+## Reproducibility
+
+Documenting steps in your work flow should be done in a way that is reproducible. There are many R style guides to guide how you annotate and organize your code - check out [the tidyverse style guide](https://style.tidyverse.org/)
+
+### Hashtags {.unnumbered}
+
+Hashtags, \#, can be used within your code to add comments or annotations. R treats \# in a special way, it will not run anything that follows a hashtag on a line. We also call these hashtags *comment symbols*.
+
+### Titles {.unnumbered}
+
+At the start of each .R script, your header should define the purpose of your code. This header should include the purpose of the script (why, what), as well as when the script has been updated. It should also include your name.
+
+```{r}
+# Title of my document
+## More information (why, what)
+## Initial date: YYYY-MM-DD
+## Update date: YYYY-MM-DD
+## Name 
+```
+
+### Sections {.unnumbered}
+
+I always start my scripts by loading packages (if the script includes any packages), this allows any lines to follow to use the functions in these packages.
+
+```{r message=FALSE, warning=FALSE}
+# Load Packages
+library(dplyr)
+```
+
+Each section should have a "\#" hashtagged title that defines what the section includes. If a line in your script includes a hashtag, it is treated as text and not code. Following the initial title, you may want to include "\#\#" followed by a description.
+
+```{r}
+# List
+## Create a list of characters
+sites <- c("a", "b", "c", "d")
+## Create a list of numbers
+areas <- c(5, 12, 10, 11) 
+```
+
+## Basic Script Example
+
+Below is a basic script. Open your own R script and write this script in your new file. Next, run each line.
+
+### Activity Goals {.unnumbered}
+
+------------------------------------------------------------------------
+
+> -   Write your first R script. Name this script "BasicScript.R".
+> -   Practice running lines of code.
+> -   Be able to identify classes of objects.\
+> -   Identify what each function does and add comments to your script to indicate what each line does.
+
+------------------------------------------------------------------------
+
+```{r echo=TRUE, message=FALSE, warning=FALSE, include=TRUE, eval=FALSE}
+# Basic Script
+## This is a basic script example
+## 2020-10-02
+## Name
+
+# Objects
+## Define objects of different classes
+weight <- 3 
+class(weight) # numeric
+weight <- 3L # integer
+weight <- 3.5 # double 
+weight <- 3+2i # complex
+hair <- TRUE # logical
+hair <- "yellow" # character
+hair = "brown"
+
+# List
+## Create a list of character
+sites <- c("a", "b", "c", "d")
+## Create a list of numbers
+areas <- c(5, 12, 10, 11) 
+
+# Slice 
+### "give me a part of something"
+### practice selecting from the lists
+sites[1:3]
+areas[3]
+
+# Combining list 
+## c or combined
+combine <- c(sites, areas)
+combine
+
+## rbind or row bind
+combine_rbind <-  rbind(sites, areas)
+combine_rbind
+
+## cbind or column bind
+### Here you have a command surrounded by parentheses -
+### What happens? Run this line to find out!
+(combine_cbind <- cbind(sites, areas))
+combine_cbind
+
+# Dataframes
+## making a data frame
+(xy <- data.frame(sites, areas))
+xy
+
+## Explore a data frame
+str(xy)
+head(xy)
+View(xy) 
+xy$areas
+class(xy$areas)
+length(xy$areas)
+nrow(xy)
+ncol(xy)
+```
+
+**Test yourself: You now should be able to answer Question 2 - 4 in the assessment.**

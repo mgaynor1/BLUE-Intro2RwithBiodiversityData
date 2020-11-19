@@ -1,0 +1,88 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+urlcolor: blue
+---
+  
+# Setup   
+
+## Learning Objectives    
+  
+------------
+
+> 
+> * Install R and RStudio.      
+> * Describe the purpose of the RStudio Screen: Source Script & document, 
+> Console, Environment & History, and Files-Veiewer Panes.  
+> * Be able to open and start an R
+>   Project, and understand the purpose of the working directory.
+
+------------
+
+## Install R and R Studio
+
+1.  [Install R](https://cran.rstudio.com/) following the instructions on [cran.rstudio.com](https://cran.rstudio.com/).\
+2.  [Install R Studio](https://rstudio.com/products/rstudio/download/#download), specifically the free version available on [rstudio.com](https://rstudio.com/products/rstudio/download/#download).
+
+  
+## Introduction to RStudio   
+Once you have R and R studio installed, open R Studio and start to get orientated.  
+  
+#### RStudio Screen  {.unnumbered}  
+
+```{r echo=FALSE, fig.align= 'center', fig.width=8, out.width = '70%'}
+knitr::include_graphics(rep('img/Rsetup.png'))
+```
+
+-   The **source** is where you can edit ".R" files or scripts, which document the lines of code you are using for your project. There are many ways to run code written in the source panel to the console (see more in Section 3.4). Other files can be viewed and edited in this panel, including those in the image below.   
+```{r echo=FALSE, fig.align= 'center', fig.width=2, out.width = '50%'}
+knitr::include_graphics(rep('img/SourceFileTypes.png'))
+```
+
+-   The **console** is where you can run commands (or lines of code) and see any printed output.
+
+-   The **environment** tab shows active objects, such as a data file you read into R (see function <kbd>read.csv</kbd>). The **history** tab shows any past commands that were run during the current R session.
+
+-   The **file** tab shows any files in your working directory. The **plots** tab will show graphs and plots produced by running code. The **packages** tab will list all installed packages. Packages are units that contain a group  of functions or commands for a specific purpose. For information about specific functions, you can search the **help** tab. The **viewer** can be used to visualize R Notebooks and R Markdowns (a fancy R script with markdown syntax, which make documents like this one).
+    -  Find out more about objects, commands, functions, and packages in section 3.3.
+
+## Creating your first project  
+RStudio projects set R working directories. This allows all files associated with a single project to be stored in one location.
+
+A **working directory** is a reference point that indicates the path to the files needed in your code. You can think of a directory path as a list of directions for the computer to follow to find or save files related to your project. 
+
+A project allows a working directory to be defined for your project. Within the project folder, you may make a folder called **scripts** and/or **data** for these files to be stored and organized.   
+
+If you did not open a project in R, you may instead be using individual R scripts either within R Studio or R run on the command line. In these instances, you can check your working directory using `getwd()`. To set your working directory, you can use `setwd("/path/to/working/directory")`.   
+ 
+  
+1.  Open R studio, then click "File" and "New Project..."  
+```{r echo=FALSE, fig.align = 'center',  fig.width=5, out.width = '70%'}
+knitr::include_graphics(rep('img/Project1.png'))
+```
+  
+  
+2.  Choose "New Directory"  
+```{r echo=FALSE, fig.align = 'center', fig.width=5, out.width = '70%'}
+knitr::include_graphics(rep('img/Project2.png'))
+```
+  
+  
+3.  Choose "New Project"  
+```{r echo=FALSE, fig.align = 'center', fig.width=5, out.width = '70%'}
+knitr::include_graphics(rep('img/Project3.png'))
+```
+  
+  
+4.  For this example, the "Directory name:" was set as "Introduction2R". Make sure you always name your project with a pharse that is meaningful and indicates the purpose of the project. "Create project as subdirectory of" was set to "\~/Desktop/ClassFolder" - this shows where the project will be saved on your computer.   
+```{r echo=FALSE, fig.align = 'center',  fig.width=5, out.width = '70%'}
+knitr::include_graphics(rep('img/Project4.png'))
+```
+   
+   
+**Congrats! You made your first R project!**   
+**Test yourself: You now should be able to answer Question 1 in the assessment.**   
+
+ 
+ 

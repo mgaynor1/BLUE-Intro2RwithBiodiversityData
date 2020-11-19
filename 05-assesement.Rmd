@@ -1,0 +1,56 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+urlcolor: blue
+---
+
+# Assessement    
+  
+1. True or False: The best way to keep your files organized for analysis is to indicate and set the working directory in each R script.
+
+```{r echo=TRUE, message=FALSE, warning=FALSE, include=TRUE, eval=FALSE}
+# New Analysis Script 
+setwd("Desktop/CURE/Analysis/Data")
+```
+
+2. Fill in the operator used to create an object named "age" which contains the values 18, 19, 20, and 17:
+```{r echo=TRUE, message=FALSE, warning=FALSE, include=TRUE, eval=FALSE}
+age [_____] c(18, 19, 20, 17)
+```
+
+3. I have a vector that includes many different types of berries in a specific order (see below). How do I subset just "strawberries" from the object?
+```{r echo=TRUE, message=FALSE, warning=FALSE, include=TRUE, eval=FALSE}
+berries <- c("strawberries", "blueberries", "raspberries", "blackberries", "cranberries")
+```
+A. <kbd>berries[1]</kbd>   
+B. <kbd>berries(1)</kbd>  
+C. <kbd>berries[,1]</kbd>  
+D. <kbd>berries[c(2)]</kbd>  
+
+
+
+4. After reading a data frame into R using the following code, I want to explore my data.    
+<kbd>mydata <- read.csv("data/mydata.csv")</kbd>.      
+
+Match the following functions with questions about the data: 
+  
+| Functions | Questions |
+|-----|------|
+| str(mydata) | What is the first row in my data frame? | 
+| head(mydata) | What is the class of the row named row1? | 
+| view(mydata) |  What are the first few rows in the data frame? |  
+| mydata[,1] |  What is in the row named row1? |   
+| "mydata$row1" |  What is the data frames structure?  |
+| "class(mydata\$row1)" | What does my data frame look like? |    
+   
+     
+     
+5. **Activity**:    
+Download specimen data for a species of interest using the iDigBio API in R following the steps learned in section 4. 
+  a. What species did you download records for?
+  b. How many observations were in this record set?
+  c. Plot a map of these records and save this plot as a jpg. 
+
+
+
