@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Class Activity | Introduction to R with Biodiversity Data</title>
+  <meta name="description" content="Students will learn R basics while downloading biodiversity data from multiple data repositories. This module will walk students through installing R, navigating R, reproducibility in R, and using R to download biodiversity data." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Class Activity | Introduction to R with Biodiversity Data" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Students will learn R basics while downloading biodiversity data from multiple data repositories. This module will walk students through installing R, navigating R, reproducibility in R, and using R to download biodiversity data." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Class Activity | Introduction to R with Biodiversity Data" />
+  
+  <meta name="twitter:description" content="Students will learn R basics while downloading biodiversity data from multiple data repositories. This module will walk students through installing R, navigating R, reproducibility in R, and using R to download biodiversity data." />
+  
+
+<meta name="author" content="ML Gaynor" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="pre-activity.html"/>
+<link rel="next" href="assessement.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="general-information.html"><a href="general-information.html"><i class="fa fa-check"></i><b>1</b> General Information</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="general-information.html"><a href="general-information.html#prerequisites"><i class="fa fa-check"></i><b>1.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="1.2" data-path="general-information.html"><a href="general-information.html#learning-objective"><i class="fa fa-check"></i><b>1.2</b> Learning objective</a></li>
+<li class="chapter" data-level="1.3" data-path="general-information.html"><a href="general-information.html#intro"><i class="fa fa-check"></i><b>1.3</b> Introduction</a></li>
+<li class="chapter" data-level="1.4" data-path="general-information.html"><a href="general-information.html#why-r"><i class="fa fa-check"></i><b>1.4</b> Why R?</a></li>
+<li class="chapter" data-level="1.5" data-path="general-information.html"><a href="general-information.html#references"><i class="fa fa-check"></i><b>1.5</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i><b>2</b> Setup</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="setup.html"><a href="setup.html#learning-objectives"><i class="fa fa-check"></i><b>2.1</b> Learning Objectives</a></li>
+<li class="chapter" data-level="2.2" data-path="setup.html"><a href="setup.html#install-r-and-r-studio"><i class="fa fa-check"></i><b>2.2</b> Install R and R Studio</a></li>
+<li class="chapter" data-level="2.3" data-path="setup.html"><a href="setup.html#introduction-to-rstudio"><i class="fa fa-check"></i><b>2.3</b> Introduction to RStudio</a></li>
+<li class="chapter" data-level="2.4" data-path="setup.html"><a href="setup.html#creating-your-first-project"><i class="fa fa-check"></i><b>2.4</b> Creating your first project</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="pre-activity.html"><a href="pre-activity.html"><i class="fa fa-check"></i><b>3</b> Pre-Activity</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="pre-activity.html"><a href="pre-activity.html#learning-objective-1"><i class="fa fa-check"></i><b>3.1</b> Learning objective</a></li>
+<li class="chapter" data-level="3.2" data-path="pre-activity.html"><a href="pre-activity.html#r-scripts"><i class="fa fa-check"></i><b>3.2</b> R Scripts</a></li>
+<li class="chapter" data-level="3.3" data-path="pre-activity.html"><a href="pre-activity.html#important-terms"><i class="fa fa-check"></i><b>3.3</b> Important Terms</a></li>
+<li class="chapter" data-level="3.4" data-path="pre-activity.html"><a href="pre-activity.html#running-code"><i class="fa fa-check"></i><b>3.4</b> Running Code</a></li>
+<li class="chapter" data-level="3.5" data-path="pre-activity.html"><a href="pre-activity.html#basic-troubleshooting"><i class="fa fa-check"></i><b>3.5</b> Basic Troubleshooting</a>
+<ul>
+<li class="chapter" data-level="" data-path="pre-activity.html"><a href="pre-activity.html#where-to-ask-for-help"><i class="fa fa-check"></i>Where to ask for help?</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="pre-activity.html"><a href="pre-activity.html#reproducibility"><i class="fa fa-check"></i><b>3.6</b> Reproducibility</a>
+<ul>
+<li class="chapter" data-level="" data-path="pre-activity.html"><a href="pre-activity.html#hashtags"><i class="fa fa-check"></i>Hashtags</a></li>
+<li class="chapter" data-level="" data-path="pre-activity.html"><a href="pre-activity.html#titles"><i class="fa fa-check"></i>Titles</a></li>
+<li class="chapter" data-level="" data-path="pre-activity.html"><a href="pre-activity.html#sections"><i class="fa fa-check"></i>Sections</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="pre-activity.html"><a href="pre-activity.html#basic-script-example"><i class="fa fa-check"></i><b>3.7</b> Basic Script Example</a>
+<ul>
+<li class="chapter" data-level="" data-path="pre-activity.html"><a href="pre-activity.html#activity-goals"><i class="fa fa-check"></i>Activity Goals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="class-activity.html"><a href="class-activity.html"><i class="fa fa-check"></i><b>4</b> Class Activity</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="class-activity.html"><a href="class-activity.html#learning-objective-2"><i class="fa fa-check"></i><b>4.1</b> Learning Objective</a></li>
+<li class="chapter" data-level="4.2" data-path="class-activity.html"><a href="class-activity.html#background-information"><i class="fa fa-check"></i><b>4.2</b> Background information</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="class-activity.html"><a href="class-activity.html#idigbio"><i class="fa fa-check"></i><b>4.2.1</b> iDigBio</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="class-activity.html"><a href="class-activity.html#downloading-data"><i class="fa fa-check"></i><b>4.3</b> Downloading Data</a>
+<ul>
+<li class="chapter" data-level="" data-path="class-activity.html"><a href="class-activity.html#set-up-your-r-project-and-r-script"><i class="fa fa-check"></i>Set up your R project and R script</a></li>
+<li class="chapter" data-level="" data-path="class-activity.html"><a href="class-activity.html#datadownloading.r"><i class="fa fa-check"></i>DataDownloading.R</a></li>
+<li class="chapter" data-level="" data-path="class-activity.html"><a href="class-activity.html#install-packages"><i class="fa fa-check"></i>Install Packages</a></li>
+<li class="chapter" data-level="" data-path="class-activity.html"><a href="class-activity.html#load-packages"><i class="fa fa-check"></i>Load Packages</a></li>
+<li class="chapter" data-level="" data-path="class-activity.html"><a href="class-activity.html#data-download-from-idigbio"><i class="fa fa-check"></i>Data download from iDigBio</a></li>
+<li class="chapter" data-level="" data-path="class-activity.html"><a href="class-activity.html#inspect-the-downloaded-records"><i class="fa fa-check"></i>Inspect the downloaded records</a></li>
+<li class="chapter" data-level="" data-path="class-activity.html"><a href="class-activity.html#plot-the-records"><i class="fa fa-check"></i>Plot the records</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="class-activity.html"><a href="class-activity.html#limiting-the-extent"><i class="fa fa-check"></i><b>4.4</b> Limiting the extent</a>
+<ul>
+<li class="chapter" data-level="" data-path="class-activity.html"><a href="class-activity.html#set-the-search-criteria"><i class="fa fa-check"></i>Set the search criteria</a></li>
+<li class="chapter" data-level="" data-path="class-activity.html"><a href="class-activity.html#plot-the-records-1"><i class="fa fa-check"></i>Plot the records</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="assessement.html"><a href="assessement.html"><i class="fa fa-check"></i><b>5</b> Assessement</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to R with Biodiversity Data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="class-activity" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Class Activity</h1>
+<div id="learning-objective-2" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Learning Objective</h2>
+<hr />
+<blockquote>
+<ul>
+<li>Demonstrate how to download biodiversity data through an Application Programming Interface.</li>
+<li>Plot occurrence data on a simple map.</li>
+</ul>
+</blockquote>
+<hr />
+</div>
+<div id="background-information" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Background information</h2>
+<div id="idigbio" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> iDigBio</h3>
+<p>iDigBio, or the Integrated Digitized Biocollections, is a biodiversity aggregator. It currently holds over 125 million specimen records and over 40 million media records.
+<img src="img/idigbio.png" width="70%" style="display: block; margin: auto;" />
+These specimen include mostly plants and animals. While media records include mostly plant specimen.
+<img src="img/idigbio2.png" width="70%" style="display: block; margin: auto;" />
+Here is an example of a plant media record:
+<img src="img/spartina_idigbio.jpg" width="70%" style="display: block; margin: auto;" />
+#### Application Programming Interface<br />
+An API, or Application Programming Interface, allows a user to interact with a system that contains data. In this case, we are interacting with iDigBio, a biodiversity data aggregator. Even when we use the web portal for iDigBio, we are still interacting with the API. Here we will learn how to interact with the iDigBio API using R.<br />
+<img src="img/API.jpg" width="70%" style="display: block; margin: auto;" /></p>
+<div id="spartina-alterniflora" class="section level4" number="4.2.1.1">
+<h4><span class="header-section-number">4.2.1.1</span> <em>Spartina alterniflora</em></h4>
+<p><em>Spartina alterniflora</em>, smooth cordgrass, grows along shorelines throughout both the Atlantic and Gulf coasts of North America. In its native range, it is used in ecosystem restoration due to its extensive rooting capabilities.</p>
+<p><img src="img/spartina.jpeg" width="50%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+</div>
+<div id="downloading-data" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Downloading Data</h2>
+<div id="set-up-your-r-project-and-r-script" class="section level3 unnumbered" number="">
+<h3>Set up your R project and R script</h3>
+<ol style="list-style-type: decimal">
+<li>Open a new R project and name it “DataDownloading”</li>
+<li>Within your R project, create an R script titled “DataDownloading.R”</li>
+</ol>
+</div>
+<div id="datadownloading.r" class="section level3 unnumbered" number="">
+<h3>DataDownloading.R</h3>
+</div>
+<div id="install-packages" class="section level3 unnumbered" number="">
+<h3>Install Packages</h3>
+<p>Do not include this in your R script! It is better to write this in the console than in our script for any package, as there’s no need to re-install packages every time we run the scrip</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="class-activity.html#cb12-1"></a><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;ridigbio&quot;</span>))</span></code></pre></div>
+<p>The rest should be included in the script.</p>
+</div>
+<div id="load-packages" class="section level3 unnumbered" number="">
+<h3>Load Packages</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="class-activity.html#cb13-1"></a><span class="kw">library</span>(ridigbio)</span>
+<span id="cb13-2"><a href="class-activity.html#cb13-2"></a><span class="kw">library</span>(ggplot2)</span></code></pre></div>
+</div>
+<div id="data-download-from-idigbio" class="section level3 unnumbered" number="">
+<h3>Data download from iDigBio</h3>
+<p>Here we use the <kbd>idig_search_records</kbd> function and the rq, or record query, indicates we want to download all the records where the <kbd>scientificname</kbd> is equal to <em>Spartina alterniflora</em>, or smooth cord grass.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="class-activity.html#cb14-1"></a>iDigBio_SA &lt;-<span class="st"> </span><span class="kw">idig_search_records</span>(<span class="dt">rq=</span><span class="kw">list</span>(<span class="dt">scientificname=</span><span class="st">&quot;Spartina alterniflora&quot;</span>))</span></code></pre></div>
+</div>
+<div id="inspect-the-downloaded-records" class="section level3 unnumbered" number="">
+<h3>Inspect the downloaded records</h3>
+<p><strong>How many observations are in this record set?</strong><br />
+To determine this, we can use the <kbd>nrow</kbd> function to see the <strong>n</strong>umber of <strong>row</strong>s this data frame includes.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="class-activity.html#cb15-1"></a><span class="kw">nrow</span>(iDigBio_SA)</span></code></pre></div>
+<pre><code>## [1] 1656</code></pre>
+<p><strong>How many columns does this data frame include?</strong><br />
+To determine this, we can use the <kbd>ncol</kbd> function to see the <strong>n</strong>umber of <strong>col</strong>umns this data frame includes.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="class-activity.html#cb17-1"></a><span class="kw">ncol</span>(iDigBio_SA)</span></code></pre></div>
+<pre><code>## [1] 13</code></pre>
+<p><strong>What columns does this data frame include?</strong><br />
+To print the <strong>col</strong>umns <strong>names</strong>, we can use the <kbd>colname</kbd> function.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="class-activity.html#cb19-1"></a><span class="kw">colnames</span>(iDigBio_SA)</span></code></pre></div>
+<pre><code>##  [1] &quot;uuid&quot;           &quot;occurrenceid&quot;   &quot;catalognumber&quot; 
+##  [4] &quot;family&quot;         &quot;genus&quot;          &quot;scientificname&quot;
+##  [7] &quot;country&quot;        &quot;stateprovince&quot;  &quot;geopoint.lon&quot;  
+## [10] &quot;geopoint.lat&quot;   &quot;datecollected&quot;  &quot;collector&quot;     
+## [13] &quot;recordset&quot;</code></pre>
+<p>Based on <a href="https://dwc.tdwg.org/">Darwin Core Standards</a>, we know what each of these columns means.</p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>uuid</td>
+<td>Universally Unique IDentifier, <a href="https://tools.ietf.org/html/rfc4122" class="uri">https://tools.ietf.org/html/rfc4122</a></td>
+</tr>
+<tr class="even">
+<td>occurrenceid</td>
+<td>identifier for the occurrence, <a href="http://rs.tdwg.org/dwc/terms/occurrenceID" class="uri">http://rs.tdwg.org/dwc/terms/occurrenceID</a></td>
+</tr>
+<tr class="odd">
+<td>catalognumber</td>
+<td>identifier for the record within the collection, <a href="http://rs.tdwg.org/dwc/terms/catalogNumber" class="uri">http://rs.tdwg.org/dwc/terms/catalogNumber</a></td>
+</tr>
+<tr class="even">
+<td>family</td>
+<td>scientific name of the family, <a href="http://rs.tdwg.org/dwc/terms/family" class="uri">http://rs.tdwg.org/dwc/terms/family</a></td>
+</tr>
+<tr class="odd">
+<td>genus</td>
+<td>scientific name of the genus, <a href="http://rs.tdwg.org/dwc/terms/genus" class="uri">http://rs.tdwg.org/dwc/terms/genus</a></td>
+</tr>
+<tr class="even">
+<td>scientificname</td>
+<td>scientific name, <a href="http://rs.tdwg.org/dwc/terms/scientificName" class="uri">http://rs.tdwg.org/dwc/terms/scientificName</a></td>
+</tr>
+<tr class="odd">
+<td>country</td>
+<td>country, <a href="http://rs.tdwg.org/dwc/terms/country" class="uri">http://rs.tdwg.org/dwc/terms/country</a></td>
+</tr>
+<tr class="even">
+<td>stateprovince</td>
+<td>name of the next smaller administrative region than country, <a href="http://rs.tdwg.org/dwc/terms/stateProvince" class="uri">http://rs.tdwg.org/dwc/terms/stateProvince</a></td>
+</tr>
+<tr class="odd">
+<td>geopoint.lon</td>
+<td>equivalent to decimalLongitude, <a href="http://rs.tdwg.org/dwc/terms/decimalLongitude" class="uri">http://rs.tdwg.org/dwc/terms/decimalLongitude</a></td>
+</tr>
+<tr class="even">
+<td>geopoint.lat</td>
+<td>equivalent to decimalLatitude,<a href="http://rs.tdwg.org/dwc/terms/decimalLatitude" class="uri">http://rs.tdwg.org/dwc/terms/decimalLatitude</a></td>
+</tr>
+<tr class="odd">
+<td>datecollected</td>
+<td>equivalent to eventDate, <a href="https://dwc.tdwg.org/terms/#dwc:eventDate" class="uri">https://dwc.tdwg.org/terms/#dwc:eventDate</a>)</td>
+</tr>
+<tr class="even">
+<td>collector</td>
+<td>equivalent to recordedBy, <a href="http://rs.tdwg.org/dwc/terms/recordedBy" class="uri">http://rs.tdwg.org/dwc/terms/recordedBy</a></td>
+</tr>
+<tr class="odd">
+<td>recordset</td>
+<td>indicates the iDigBio recordset the observation belongs too</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="plot-the-records" class="section level3 unnumbered" number="">
+<h3>Plot the records</h3>
+<p>Now that we have inspected the data frame, let’s plot the records. We will use <kbd>ggplot2</kbd> to create a simple plot.</p>
+<p>First, we need to download a basemap to plot our points on. Here I download a world map that is outlined and filled with the shade “gray50” using the function <kbd>borders</kbd> which is from the package <kbd>ggplot2</kbd>.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="class-activity.html#cb21-1"></a>world &lt;-<span class="st"> </span><span class="kw">borders</span>(<span class="dt">database =</span> <span class="st">&quot;world&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;gray50&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;gray50&quot;</span>)</span></code></pre></div>
+<p>Next, we are going to create a plot using the base map. We will add the points from the <kbd>iDigBio_SA</kbd> data frame using the <kbd>geom_point</kbd> function. For ggplot2, you have to indicate mapping aesthetics or <kbd> mapping = aes()</kbd>. Within this statement we include <kbd> x = geopoint.lon, y = geopoint.lat) </kdb> to indicate that the x coordinate should be the column containig longitude (geopoint.lon), and the y coordinate should be the column containing latitude (geopoint.lat). Finally, we indicate we want these points to be blue, or <kdb> col = “Blue” </kdb>.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="class-activity.html#cb22-1"></a>all_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb22-2"><a href="class-activity.html#cb22-2"></a><span class="st">            </span>world <span class="op">+</span></span>
+<span id="cb22-3"><a href="class-activity.html#cb22-3"></a><span class="st">            </span><span class="kw">geom_point</span>(iDigBio_SA, </span>
+<span id="cb22-4"><a href="class-activity.html#cb22-4"></a>                       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> geopoint.lon, <span class="dt">y =</span> geopoint.lat), </span>
+<span id="cb22-5"><a href="class-activity.html#cb22-5"></a>                       <span class="dt">col =</span> <span class="st">&quot;Blue&quot;</span>)</span>
+<span id="cb22-6"><a href="class-activity.html#cb22-6"></a>all_plot</span></code></pre></div>
+<p><img src="Intro2R-Bookdown_files/figure-html/unnamed-chunk-31-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>When you plot the occurrence records downloaded, you will notice points outside of the native range! <em>Spartina alterniflora</em> is very invasive in California and other parts of the world.</p>
+<p><strong>Save as a jpg</strong>: To save your map as an image file, you can easily run the following lines.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="class-activity.html#cb23-1"></a><span class="kw">jpeg</span>(<span class="dt">file=</span><span class="st">&quot;map_spartina.jpeg&quot;</span>)</span>
+<span id="cb23-2"><a href="class-activity.html#cb23-2"></a>all_plot</span>
+<span id="cb23-3"><a href="class-activity.html#cb23-3"></a><span class="kw">dev.off</span>()</span></code></pre></div>
+</div>
+</div>
+<div id="limiting-the-extent" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Limiting the extent</h2>
+<p>What if you want to only download points for the species within the native extent? Then we would need to define a bounding box to restrict our query (as coded by <kdb>rq</kdb>) too.</p>
+<p>Hint: Use the <a href="https://www.idigbio.org/portal/search">iDigBio portal</a> to determine the coordinates for the corners of the bounding box of your region of interest.<br />
+<img src="img/BoundingBox2.png" width="70%" style="display: block; margin: auto;" /></p>
+<div id="set-the-search-criteria" class="section level3 unnumbered" number="">
+<h3>Set the search criteria</h3>
+<p>Here we will redefine the rq, or record query, to include a <kbd>geo_bounding_box</kbd> based on the iDigBio webportal - I limited the extent only to the native range.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="class-activity.html#cb24-1"></a>rq_input &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;scientificname&quot;</span>=<span class="st">&quot;Spartina alterniflora&quot;</span>,</span>
+<span id="cb24-2"><a href="class-activity.html#cb24-2"></a>                 <span class="dt">geopoint=</span><span class="kw">list</span>( <span class="dt">type=</span><span class="st">&quot;geo_bounding_box&quot;</span>,</span>
+<span id="cb24-3"><a href="class-activity.html#cb24-3"></a>                                <span class="dt">top_left=</span><span class="kw">list</span>(<span class="dt">lon =</span> <span class="fl">-102.33</span>, <span class="dt">lat =</span> <span class="fl">46.64</span>),</span>
+<span id="cb24-4"><a href="class-activity.html#cb24-4"></a>                                <span class="dt">bottom_right=</span><span class="kw">list</span>(<span class="dt">lon =</span> <span class="fl">-55.33</span>, <span class="dt">lat =</span> <span class="fl">20.43</span>) ) )</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="class-activity.html#cb25-1"></a>iDigBio_SA_limited &lt;-<span class="st"> </span><span class="kw">idig_search_records</span>(<span class="dt">rq=</span>rq_input)</span></code></pre></div>
+</div>
+<div id="plot-the-records-1" class="section level3 unnumbered" number="">
+<h3>Plot the records</h3>
+<p>Similar to before, we will use <kbd>ggplot2</kbd> to plot our points. These records only include points within the desired extent!</p>
+<p>Since the native range is only in the USA, I downloaded a USA map that is outlined and filled with the shade “gray50” using the function <kbd>borders</kbd> which is from the package <kbd>ggplot2</kbd>.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="class-activity.html#cb26-1"></a>USA &lt;-<span class="st"> </span><span class="kw">borders</span>(<span class="dt">database =</span> <span class="st">&quot;usa&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;gray50&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;gray50&quot;</span>) </span>
+<span id="cb26-2"><a href="class-activity.html#cb26-2"></a>limited_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb26-3"><a href="class-activity.html#cb26-3"></a><span class="st">                </span>USA <span class="op">+</span></span>
+<span id="cb26-4"><a href="class-activity.html#cb26-4"></a><span class="st">                </span><span class="kw">geom_point</span>(iDigBio_SA,</span>
+<span id="cb26-5"><a href="class-activity.html#cb26-5"></a>                           <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> geopoint.lon, <span class="dt">y =</span> geopoint.lat), </span>
+<span id="cb26-6"><a href="class-activity.html#cb26-6"></a>                           <span class="dt">col =</span> <span class="st">&quot;Blue&quot;</span>) <span class="op">+</span></span>
+<span id="cb26-7"><a href="class-activity.html#cb26-7"></a><span class="st">                </span><span class="kw">coord_map</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">60</span>,<span class="op">-</span><span class="dv">105</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">50</span>))</span>
+<span id="cb26-8"><a href="class-activity.html#cb26-8"></a>            </span>
+<span id="cb26-9"><a href="class-activity.html#cb26-9"></a>limited_plot</span></code></pre></div>
+<p><img src="Intro2R-Bookdown_files/figure-html/unnamed-chunk-36-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><strong>Congrats! You have made it through all the activities, you should now be able to answer all the questions in the assessment!</strong></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="pre-activity.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="assessement.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Intro2R-Bookdown.pdf", "Intro2R-Bookdown.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

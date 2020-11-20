@@ -1,0 +1,1270 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[
+]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Introduction to R with Biodiversity Data},
+  pdfauthor={ML Gaynor},
+  colorlinks=true,
+  linkcolor=Maroon,
+  filecolor=Maroon,
+  citecolor=Blue,
+  urlcolor=blue,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage{titling}
+\pretitle{\begin{center} \includegraphics[width=2in,height=2in]{img/BLUE.png}\LARGE\\}
+\posttitle{\end{center}}
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{Introduction to R with Biodiversity Data}
+\author{ML Gaynor}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{general-information}{%
+\chapter{General Information}\label{general-information}}
+
+\hypertarget{prerequisites}{%
+\section{Prerequisites}\label{prerequisites}}
+
+\begin{itemize}
+\tightlist
+\item
+  Basics in file management and familiarity with data sheets (in Microsoft Excel, Google sheets, etc.)
+\end{itemize}
+
+\hypertarget{learning-objective}{%
+\section{Learning objective}\label{learning-objective}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Be able to navigate R Studio and write reproducible code.\\
+\item
+  Execute lines of code, as well as complete scripts.\\
+\item
+  Identify variables, functions, and operators.\\
+\item
+  Approach basic troubleshooting.\\
+\item
+  Know how to download biodiversity data using Application Programming Interfacen (API).
+\end{itemize}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{intro}{%
+\section{Introduction}\label{intro}}
+
+Students will learn R basics while downloading biodiversity data from multiple data repositories. This module will walk students through installing R, navigating R,writing reproducible scripts in R, and using R to download biodiversity data.
+
+\begin{center}\includegraphics[width=1.97in]{img/Rlogo} \end{center}
+
+\hypertarget{why-r}{%
+\section{Why R?}\label{why-r}}
+
+\begin{figure}
+\centering
+\includegraphics[width=4.77083in,height=\textheight]{img/Rtiobes.png}
+\caption{Graph of R ratings overtime, rating is based on commonly used search engines, (x-axis is year, y-axis is rating (\%)) shows the rating of R increasing over time.}
+\end{figure}
+
+\begin{itemize}
+\item
+  R is a popular scripting language with readily available jobs (see jobs here: \href{https://www.r-users.com/}{r-users.com})
+\item
+  R allows for reproducibility
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Every step is documented by each line of code in an analysis.
+  \end{itemize}
+\item
+  R is free and open access
+
+  \begin{itemize}
+  \tightlist
+  \item
+    there is no associated cost 💲
+  \item
+    lots of community support for writing and troubleshooting code (ex. \href{https://stackoverflow.com/}{Overflow})
+  \end{itemize}
+\item
+  R is interdisciplinary
+\item
+  R can create beautiful figures
+\end{itemize}
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+There are a lot of online resources for learning R. Throughout this activity we reference additional resources that may be useful. Below, we summarize the cited resources, as well as some additional references. We used many of these resources to create this activity.
+
+\hypertarget{general}{%
+\subsubsection*{General}\label{general}}
+\addcontentsline{toc}{subsubsection}{General}
+
+\begin{itemize}
+\item
+  \href{https://datacarpentry.org/R-ecology-lesson/index.html}{R Ecology Lesson}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Introduction chapters for data carpentry ecology.
+  \end{itemize}
+\item
+  \href{https://education.rstudio.com/learn/beginner/}{RStudio Education}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Resources for beginners by the creators of R Studio.
+  \end{itemize}
+\item
+  \href{https://www.r-bloggers.com/}{R-bloggers}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    R news and tutorials by hundreds of R bloggers.
+  \end{itemize}
+\item
+  \href{https://rforcats.net/}{R for cats} and cat lovers
+
+  \begin{itemize}
+  \tightlist
+  \item
+    A cat🐱-oriented way to learn R basics.
+  \end{itemize}
+\item
+  \href{http://www.nimbios.org/products/prod_pdfs/RforBiologistv1.1.pdf}{R for Biologist NIMBioS}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    An introduction to R and descriptive statistics 📊.
+  \end{itemize}
+\item
+  \href{https://rladiessydney.org/courses/ryouwithme/}{RYouWithMe}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Made by R-ladies Sydney. Fun tutorials on R basics, data cleaning, data visualization, and R markdowns.
+  \end{itemize}
+\item
+  \href{https://carpentries.org/}{The Carpentries}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ``The Carpentries teaches foundational coding, and data science skills to researchers worldwide.'' This organization hosts workshops and makes its lesson plans available freely for self-learning and reuse. Main lessons are divided into\ldots"
+  \end{itemize}
+\item
+  \href{https://r4ds.had.co.nz/}{R for Data Science}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ``R for Data Science'' textbook.
+  \end{itemize}
+\item
+  \href{https://www.t4rstats.com/}{Twitter for R programmers}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Learn how to connect with the R community over twitter.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{tidyverse}{%
+\subsubsection*{Tidyverse}\label{tidyverse}}
+\addcontentsline{toc}{subsubsection}{Tidyverse}
+
+\href{https://www.tidyverse.org/}{Tidyverse} is a must-have suite of packages (defined in section 3.3) for data wrangling and analysis that includes many packages. Important :
+
+\begin{itemize}
+\item
+  \href{https://dplyr.tidyverse.org/}{dplyr}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    data manipulation and management
+  \end{itemize}
+\item
+  \href{https://tidyr.tidyverse.org/}{tidyr}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    tidying your data
+  \end{itemize}
+\item
+  \href{https://ggplot2.tidyverse.org/}{ggplot2}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    data visualization
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{r-based-courses}{%
+\subsubsection*{R based courses}\label{r-based-courses}}
+\addcontentsline{toc}{subsubsection}{R based courses}
+
+\begin{itemize}
+\item
+  \href{https://datasciencebox.org/}{DataScienceBox}
+\item
+  \href{https://stat545.com/}{STAT 545}
+\item
+  \href{https://datacarpentry.org/semester-biology/}{Data Carpentry for Biologist}
+\end{itemize}
+
+\hypertarget{setup}{%
+\chapter{Setup}\label{setup}}
+
+\hypertarget{learning-objectives}{%
+\section{Learning Objectives}\label{learning-objectives}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Install R and RStudio.\\
+\item
+  Describe the purpose of the RStudio Screen: Source Script \& document,
+  Console, Environment \& History, and Files-Veiewer Panes.\\
+\item
+  Be able to open and start an R
+  Project, and understand the purpose of the working directory.
+\end{itemize}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{install-r-and-r-studio}{%
+\section{Install R and R Studio}\label{install-r-and-r-studio}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://cran.rstudio.com/}{Install R} following the instructions on \href{https://cran.rstudio.com/}{cran.rstudio.com}.\\
+\item
+  \href{https://rstudio.com/products/rstudio/download/\#download}{Install R Studio}, specifically the free version available on \href{https://rstudio.com/products/rstudio/download/\#download}{rstudio.com}.
+\end{enumerate}
+
+\hypertarget{introduction-to-rstudio}{%
+\section{Introduction to RStudio}\label{introduction-to-rstudio}}
+
+Once you have R and R studio installed, open R Studio and start to get orientated.
+
+\hypertarget{rstudio-screen}{%
+\subsubsection*{RStudio Screen}\label{rstudio-screen}}
+\addcontentsline{toc}{subsubsection}{RStudio Screen}
+
+\begin{center}\includegraphics[width=0.7\linewidth]{img/Rsetup} \end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  The \textbf{source} is where you can edit ``.R'' files or scripts, which document the lines of code you are using for your project. There are many ways to run code written in the source panel to the console (see more in Section 3.4). Other files can be viewed and edited in this panel, including those in the image below.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.5\linewidth]{img/SourceFileTypes} \end{center}
+
+\begin{itemize}
+\item
+  The \textbf{console} is where you can run commands (or lines of code) and see any printed output.
+\item
+  The \textbf{environment} tab shows active objects, such as a data file you read into R (see function read.csv). The \textbf{history} tab shows any past commands that were run during the current R session.
+\item
+  The \textbf{file} tab shows any files in your working directory. The \textbf{plots} tab will show graphs and plots produced by running code. The \textbf{packages} tab will list all installed packages. Packages are units that contain a group of functions or commands for a specific purpose. For information about specific functions, you can search the \textbf{help} tab. The \textbf{viewer} can be used to visualize R Notebooks and R Markdowns (a fancy R script with markdown syntax, which make documents like this one).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Find out more about objects, commands, functions, and packages in section 3.3.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{creating-your-first-project}{%
+\section{Creating your first project}\label{creating-your-first-project}}
+
+RStudio projects set R working directories. This allows all files associated with a single project to be stored in one location.
+
+A \textbf{working directory} is a reference point that indicates the path to the files needed in your code. You can think of a directory path as a list of directions for the computer to follow to find or save files related to your project.
+
+A project allows a working directory to be defined for your project. Within the project folder, you may make a folder called \textbf{scripts} and/or \textbf{data} for these files to be stored and organized.
+
+If you did not open a project in R, you may instead be using individual R scripts either within R Studio or R run on the command line. In these instances, you can check your working directory using \texttt{getwd()}. To set your working directory, you can use \texttt{setwd("/path/to/working/directory")}.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Open R studio, then click ``File'' and ``New Project\ldots{}''
+\end{enumerate}
+
+\begin{center}\includegraphics[width=0.7\linewidth]{img/Project1} \end{center}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Choose ``New Directory''
+\end{enumerate}
+
+\begin{center}\includegraphics[width=0.7\linewidth]{img/Project2} \end{center}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Choose ``New Project''
+\end{enumerate}
+
+\begin{center}\includegraphics[width=0.7\linewidth]{img/Project3} \end{center}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  For this example, the ``Directory name:'' was set as ``Introduction2R''. Make sure you always name your project with a pharse that is meaningful and indicates the purpose of the project. ``Create project as subdirectory of'' was set to ``\textasciitilde/Desktop/ClassFolder'' - this shows where the project will be saved on your computer.
+\end{enumerate}
+
+\begin{center}\includegraphics[width=0.7\linewidth]{img/Project4} \end{center}
+
+\textbf{Congrats! You made your first R project!}\\
+\textbf{Test yourself: You now should be able to answer Question 1 in the assessment.}
+
+\hypertarget{pre-activity}{%
+\chapter{Pre-Activity}\label{pre-activity}}
+
+In this pre-activity, we will go over some R Basics. At the end of this chapter, you will write your first R script!
+
+\hypertarget{learning-objective-1}{%
+\section{Learning objective}\label{learning-objective-1}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Define objects, operators, functions, and R packages.
+\item
+  Use the built-in RStudio help interface to search for more information on R functions.
+\item
+  Run commands in the console and from a script.
+\item
+  Demonstrate how to provide sufficient information for troubleshooting with the R user community.
+\item
+  Be able to write R scripts in a reproducible manner.
+\end{itemize}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{r-scripts}{%
+\section{R Scripts}\label{r-scripts}}
+
+\begin{itemize}
+\item
+  Below we summarize some R basics, but to find out more about \href{https://support.rstudio.com/hc/en-us/articles/200484448-Editing-and-Executing-Code}{R Scripts} please review the link for some tips about:
+
+  \begin{itemize}
+  \item
+    Code Completion
+  \item
+    Find and Replace
+  \item
+    Extract Function
+  \item
+    Comment/Uncomment
+  \item
+    Executing Code
+  \end{itemize}
+\end{itemize}
+
+To open your first .R file or R Script, click the paper logo with the green plus sign OR ``File'' -\textgreater{} ``New File'' -\textgreater{} ``R Script''.
+
+\begin{center}\includegraphics[width=5.03in]{img/Rscript} \end{center}
+
+R Scripts are used to document the code you use in your project. These scripts can be used as a reference for yourself and allow others to reproduce your analysis. Learn more about running code from R Scripts in section 3.4.
+
+\begin{longtable}[]{@{}l@{}}
+\toprule
+\endhead
+\begin{minipage}[t]{0.97\columnwidth}\raggedright
+\textgreater{}
+\textgreater{} \textbf{Naming R Scripts}\\
+\textgreater{}
+\textgreater{} - Make sure you R Scripts file names are meaningful and end in .R.
+\textgreater{}
+\textgreater{} - Avoid using special characters in file names. Instead use numbers, letters, dashes (-), and underscores (\_).
+\textgreater{}
+\textgreater{} - If files should be run in a particular order, prefix them with numbers. For example, 01\_setup.R.
+\textgreater{}\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{important-terms}{%
+\section{Important Terms}\label{important-terms}}
+
+\begin{center}\includegraphics[width=6.64in]{img/definitions} \end{center}
+
+\href{https://cran.r-project.org/doc/manuals/r-release/R-lang.html\#Objects}{\textbf{object}}\textbf{:} is what data is stored in your R environment. In the R programming language, this term is interchangeable with \textbf{variable}.
+
+\begin{itemize}
+\tightlist
+\item
+  Objects will have \href{http://www.diegobarneche.com/2014-12-11-ufsc/lessons/01-intro_r/data-structures.html}{\textbf{classes}} (eg. numeric, character, factor, logical)
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{weight \textless{}{-}}\StringTok{ }\DecValTok{3}
+\KeywordTok{class}\NormalTok{(weight)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+\href{https://stat.ethz.ch/R-manual/R-devel/library/base/html/Syntax.html}{\textbf{operator}}: assignment operators assign a value to an object. Assignment operators may be a back arrow \textless- or an equal sign =.
+
+\begin{itemize}
+\tightlist
+\item
+  Quick operator: For PC users, typing Alt + - (push the keys at the same time) will write \texttt{\textless{}-}. On a Mac, typing Option + - (push the keys at the same time) does the same.
+\end{itemize}
+
+\href{https://personality-project.org/r/r.commands.html}{\textbf{command}}: the complete line shown above can be called a command, here an object is assigned a value. This value can be directly assigned (eg. x \textless- 10) or calculated through a function (see above).
+
+\href{\%22https://www.tutorialspoint.com/r/r_functions.htm\%22}{\textbf{function}}: a function is a set of processes that you can apply to an object or group of variables. .
+
+R has base functions, or functions that come with it, like round:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{weight \textless{}{-}}\StringTok{ }\FloatTok{3.4759875}
+\KeywordTok{round}\NormalTok{(weight)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+If you need help with a specific function, let's say plot(), you can type:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{?plot}
+\end{Highlighting}
+\end{Shaded}
+
+You can also write your own functions. For example, if we have a weight in kilograms that we want to convert to pounds and we want to round the converted weight, we could write are own function to do this. Here the function we made is called convertkg2lb, this function will first convert kg to lb, then round this value, and finally return the rounded weight in lb. .
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{convertkg2lb \textless{}{-}}\StringTok{ }\ControlFlowTok{function}\NormalTok{(weightkg)\{}
+\NormalTok{  weightlb \textless{}{-}}\StringTok{ }\NormalTok{weightkg}\OperatorTok{*}\FloatTok{2.20462}
+\NormalTok{  rounded\_weightlb \textless{}{-}}\StringTok{ }\KeywordTok{round}\NormalTok{(weightlb)}
+  \KeywordTok{return}\NormalTok{(rounded\_weightlb)}
+\NormalTok{\}}
+
+\NormalTok{weight \textless{}{-}}\StringTok{ }\FloatTok{3.4759875}
+\KeywordTok{convertkg2lb}\NormalTok{(weight)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8
+\end{verbatim}
+
+This function may not be very useful to write when we only have one weight to convert, however if you need to convert and round 100 weights, you can reduce the number of lines of codes in half by using a function.
+
+\href{https://www.datacamp.com/community/tutorials/r-packages-guide}{\textbf{R package}}: is a group of functions. Offical R packages are avaliable via \href{https://cran.r-project.org/}{CRAN}. For the class activity, we will be using packages from \href{https://www.tidyverse.org/}{Tidyverse}.
+
+\hypertarget{running-code}{%
+\section{Running Code}\label{running-code}}
+
+You can type commands directly into the console and press \texttt{Enter} to execute those commands. Sadly, commands run in the console will be forgotten when you close the session.
+
+To document your code and allow for reproducibility, it is better to type the commands we want in the script editor, and save the script. RStudio allows you to execute commands directly from the script editor by using on PC the \texttt{Ctrl} + \texttt{Enter} shortcut, and on Macs, \texttt{Cmd} + \texttt{Return}.
+
+Individual lines of code can also be run by clicking the ``Run'' button or you can run the whole script by clicking ``Source''.
+
+\begin{center}\includegraphics[width=6.28in]{img/Running} \end{center}
+
+You can find other keyboard shortcuts in this \href{https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf}{RStudio cheatsheet about the RStudio IDE}.
+
+\hypertarget{basic-troubleshooting}{%
+\section{Basic Troubleshooting}\label{basic-troubleshooting}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{quote}
+\hypertarget{read-the-error-message}{%
+\subsection*{1. Read the error message}\label{read-the-error-message}}
+\addcontentsline{toc}{subsection}{1. Read the error message}
+
+\begin{itemize}
+\tightlist
+\item
+  For example, if your message reads ``incorrect field specification'', check the function (?function) to make sure you specified the correct variables.
+\end{itemize}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{quote}
+\hypertarget{google-the-error-message}{%
+\subsection*{2. Google the error message}\label{google-the-error-message}}
+\addcontentsline{toc}{subsection}{2. Google the error message}
+
+\begin{itemize}
+\tightlist
+\item
+  Sometimes the error message will be confusing and reading it will not provide any insight. This is when google is helpful!
+\item
+  If your error message is super generic, also include the name of the function or package when googling.
+\end{itemize}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{quote}
+\hypertarget{ask-for-help}{%
+\subsection*{3. Ask for help}\label{ask-for-help}}
+\addcontentsline{toc}{subsection}{3. Ask for help}
+
+\begin{itemize}
+\tightlist
+\item
+  If google did not answer your question, the next step would be to ask your classmates and/or instructor for help.
+\item
+  Include the sessionInfo() - which prints the version of R, the packages loaded, and other useful information.
+\end{itemize}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{where-to-ask-for-help}{%
+\subsection*{Where to ask for help?}\label{where-to-ask-for-help}}
+\addcontentsline{toc}{subsection}{Where to ask for help?}
+
+\begin{itemize}
+\item
+  First start by ask your classmates and instructor.
+\item
+  \href{https://stackoverflow.com/questions/tagged/r?tab=Votes}{Stack Overflow}: Check out this awesome blog post on \href{https://stackoverflow.com/help/how-to-ask}{``How do I ask a good question?''} before posting.
+\item
+  \href{https://blog.revolutionanalytics.com/2014/01/how-to-ask-for-r-help.html}{How to ask for R help}: Make sure you are asking good questions!
+\end{itemize}
+
+\hypertarget{reproducibility}{%
+\section{Reproducibility}\label{reproducibility}}
+
+Documenting steps in your work flow should be done in a way that is reproducible. There are many R style guides to guide how you annotate and organize your code - check out \href{https://style.tidyverse.org/}{the tidyverse style guide}
+
+\hypertarget{hashtags}{%
+\subsection*{Hashtags}\label{hashtags}}
+\addcontentsline{toc}{subsection}{Hashtags}
+
+Hashtags, \#, can be used within your code to add comments or annotations. R treats \# in a special way, it will not run anything that follows a hashtag on a line. We also call these hashtags \emph{comment symbols}.
+
+\hypertarget{titles}{%
+\subsection*{Titles}\label{titles}}
+\addcontentsline{toc}{subsection}{Titles}
+
+At the start of each .R script, your header should define the purpose of your code. This header should include the purpose of the script (why, what), as well as when the script has been updated. It should also include your name.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Title of my document}
+\CommentTok{\#\# More information (why, what)}
+\CommentTok{\#\# Initial date: YYYY{-}MM{-}DD}
+\CommentTok{\#\# Update date: YYYY{-}MM{-}DD}
+\CommentTok{\#\# Name }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{sections}{%
+\subsection*{Sections}\label{sections}}
+\addcontentsline{toc}{subsection}{Sections}
+
+I always start my scripts by loading packages (if the script includes any packages), this allows any lines to follow to use the functions in these packages.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load Packages}
+\KeywordTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+Each section should have a ``\#'' hashtagged title that defines what the section includes. If a line in your script includes a hashtag, it is treated as text and not code. Following the initial title, you may want to include ``\#\#'' followed by a description.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# List}
+\CommentTok{\#\# Create a list of characters}
+\NormalTok{sites \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{, }\StringTok{"d"}\NormalTok{)}
+\CommentTok{\#\# Create a list of numbers}
+\NormalTok{areas \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{basic-script-example}{%
+\section{Basic Script Example}\label{basic-script-example}}
+
+Below is a basic script. Open your own R script and write this script in your new file. Next, run each line.
+
+\hypertarget{activity-goals}{%
+\subsection*{Activity Goals}\label{activity-goals}}
+\addcontentsline{toc}{subsection}{Activity Goals}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Write your first R script. Name this script ``BasicScript.R''.
+\item
+  Practice running lines of code.
+\item
+  Be able to identify classes of objects.\\
+\item
+  Identify what each function does and add comments to your script to indicate what each line does.
+\end{itemize}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Basic Script}
+\CommentTok{\#\# This is a basic script example}
+\CommentTok{\#\# 2020{-}10{-}02}
+\CommentTok{\#\# Name}
+
+\CommentTok{\# Objects}
+\CommentTok{\#\# Define objects of different classes}
+\NormalTok{weight \textless{}{-}}\StringTok{ }\DecValTok{3} 
+\KeywordTok{class}\NormalTok{(weight) }\CommentTok{\# numeric}
+\NormalTok{weight \textless{}{-}}\StringTok{ }\NormalTok{3L }\CommentTok{\# integer}
+\NormalTok{weight \textless{}{-}}\StringTok{ }\FloatTok{3.5} \CommentTok{\# double }
+\NormalTok{weight \textless{}{-}}\StringTok{ }\DecValTok{3}\OperatorTok{+}\NormalTok{2i }\CommentTok{\# complex}
+\NormalTok{hair \textless{}{-}}\StringTok{ }\OtherTok{TRUE} \CommentTok{\# logical}
+\NormalTok{hair \textless{}{-}}\StringTok{ "yellow"} \CommentTok{\# character}
+\NormalTok{hair =}\StringTok{ "brown"}
+
+\CommentTok{\# List}
+\CommentTok{\#\# Create a list of character}
+\NormalTok{sites \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{, }\StringTok{"d"}\NormalTok{)}
+\CommentTok{\#\# Create a list of numbers}
+\NormalTok{areas \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{) }
+
+\CommentTok{\# Slice }
+\CommentTok{\#\#\# "give me a part of something"}
+\CommentTok{\#\#\# practice selecting from the lists}
+\NormalTok{sites[}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{]}
+\NormalTok{areas[}\DecValTok{3}\NormalTok{]}
+
+\CommentTok{\# Combining list }
+\CommentTok{\#\# c or combined}
+\NormalTok{combine \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(sites, areas)}
+\NormalTok{combine}
+
+\CommentTok{\#\# rbind or row bind}
+\NormalTok{combine\_rbind \textless{}{-}}\StringTok{  }\KeywordTok{rbind}\NormalTok{(sites, areas)}
+\NormalTok{combine\_rbind}
+
+\CommentTok{\#\# cbind or column bind}
+\CommentTok{\#\#\# Here you have a command surrounded by parentheses {-}}
+\CommentTok{\#\#\# What happens? Run this line to find out!}
+\NormalTok{(combine\_cbind \textless{}{-}}\StringTok{ }\KeywordTok{cbind}\NormalTok{(sites, areas))}
+\NormalTok{combine\_cbind}
+
+\CommentTok{\# Dataframes}
+\CommentTok{\#\# making a data frame}
+\NormalTok{(xy \textless{}{-}}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(sites, areas))}
+\NormalTok{xy}
+
+\CommentTok{\#\# Explore a data frame}
+\KeywordTok{str}\NormalTok{(xy)}
+\KeywordTok{head}\NormalTok{(xy)}
+\KeywordTok{View}\NormalTok{(xy) }
+\NormalTok{xy}\OperatorTok{$}\NormalTok{areas}
+\KeywordTok{class}\NormalTok{(xy}\OperatorTok{$}\NormalTok{areas)}
+\KeywordTok{length}\NormalTok{(xy}\OperatorTok{$}\NormalTok{areas)}
+\KeywordTok{nrow}\NormalTok{(xy)}
+\KeywordTok{ncol}\NormalTok{(xy)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Test yourself: You now should be able to answer Question 2 - 4 in the assessment.}
+
+\hypertarget{class-activity}{%
+\chapter{Class Activity}\label{class-activity}}
+
+\hypertarget{learning-objective-2}{%
+\section{Learning Objective}\label{learning-objective-2}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Demonstrate how to download biodiversity data through an Application Programming Interface.
+\item
+  Plot occurrence data on a simple map.
+\end{itemize}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{background-information}{%
+\section{Background information}\label{background-information}}
+
+\hypertarget{idigbio}{%
+\subsection{iDigBio}\label{idigbio}}
+
+iDigBio, or the Integrated Digitized Biocollections, is a biodiversity aggregator. It currently holds over 125 million specimen records and over 40 million media records.
+
+\begin{center}\includegraphics[width=0.7\linewidth]{img/idigbio} \end{center}
+
+These specimen include mostly plants and animals. While media records include mostly plant specimen.
+
+\begin{center}\includegraphics[width=0.7\linewidth]{img/idigbio2} \end{center}
+
+Here is an example of a plant media record:
+
+\begin{center}\includegraphics[width=0.7\linewidth]{img/spartina_idigbio} \end{center}
+
+\hypertarget{application-programming-interface}{%
+\subsubsection{Application Programming Interface}\label{application-programming-interface}}
+
+An API, or Application Programming Interface, allows a user to interact with a system that contains data. In this case, we are interacting with iDigBio, a biodiversity data aggregator. Even when we use the web portal for iDigBio, we are still interacting with the API. Here we will learn how to interact with the iDigBio API using R.
+
+\begin{center}\includegraphics[width=0.7\linewidth]{img/API} \end{center}
+
+\hypertarget{spartina-alterniflora}{%
+\subsubsection{\texorpdfstring{\emph{Spartina alterniflora}}{Spartina alterniflora}}\label{spartina-alterniflora}}
+
+\emph{Spartina alterniflora}, smooth cordgrass, grows along shorelines throughout both the Atlantic and Gulf coasts of North America. In its native range, it is used in ecosystem restoration due to its extensive rooting capabilities.
+
+\begin{center}\includegraphics[width=0.5\linewidth]{img/spartina} \end{center}
+
+\hypertarget{downloading-data}{%
+\section{Downloading Data}\label{downloading-data}}
+
+\hypertarget{set-up-your-r-project-and-r-script}{%
+\subsection*{Set up your R project and R script}\label{set-up-your-r-project-and-r-script}}
+\addcontentsline{toc}{subsection}{Set up your R project and R script}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Open a new R project and name it ``DataDownloading''
+\item
+  Within your R project, create an R script titled ``DataDownloading.R''
+\end{enumerate}
+
+\hypertarget{datadownloading.r}{%
+\subsection*{DataDownloading.R}\label{datadownloading.r}}
+\addcontentsline{toc}{subsection}{DataDownloading.R}
+
+\hypertarget{install-packages}{%
+\subsection*{Install Packages}\label{install-packages}}
+\addcontentsline{toc}{subsection}{Install Packages}
+
+Do not include this in your R script! It is better to write this in the console than in our script for any package, as there's no need to re-install packages every time we run the scrip
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{, }\StringTok{"ridigbio"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+The rest should be included in the script.
+
+\hypertarget{load-packages}{%
+\subsection*{Load Packages}\label{load-packages}}
+\addcontentsline{toc}{subsection}{Load Packages}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ridigbio)}
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{data-download-from-idigbio}{%
+\subsection*{Data download from iDigBio}\label{data-download-from-idigbio}}
+\addcontentsline{toc}{subsection}{Data download from iDigBio}
+
+Here we use the idig\_search\_records function and the rq, or record query, indicates we want to download all the records where the scientificname is equal to \emph{Spartina alterniflora}, or smooth cord grass.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{iDigBio\_SA \textless{}{-}}\StringTok{ }\KeywordTok{idig\_search\_records}\NormalTok{(}\DataTypeTok{rq=}\KeywordTok{list}\NormalTok{(}\DataTypeTok{scientificname=}\StringTok{"Spartina alterniflora"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{inspect-the-downloaded-records}{%
+\subsection*{Inspect the downloaded records}\label{inspect-the-downloaded-records}}
+\addcontentsline{toc}{subsection}{Inspect the downloaded records}
+
+\textbf{How many observations are in this record set?}\\
+To determine this, we can use the nrow function to see the \textbf{n}umber of \textbf{row}s this data frame includes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{nrow}\NormalTok{(iDigBio\_SA)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1656
+\end{verbatim}
+
+\textbf{How many columns does this data frame include?}\\
+To determine this, we can use the ncol function to see the \textbf{n}umber of \textbf{col}umns this data frame includes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ncol}\NormalTok{(iDigBio\_SA)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 13
+\end{verbatim}
+
+\textbf{What columns does this data frame include?}\\
+To print the \textbf{col}umns \textbf{names}, we can use the colname function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{colnames}\NormalTok{(iDigBio\_SA)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "uuid"           "occurrenceid"   "catalognumber" 
+##  [4] "family"         "genus"          "scientificname"
+##  [7] "country"        "stateprovince"  "geopoint.lon"  
+## [10] "geopoint.lat"   "datecollected"  "collector"     
+## [13] "recordset"
+\end{verbatim}
+
+Based on \href{https://dwc.tdwg.org/}{Darwin Core Standards}, we know what each of these columns means.
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.47\columnwidth}\raggedright
+Column\strut
+\end{minipage} & \begin{minipage}[b]{0.47\columnwidth}\raggedright
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+uuid\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+Universally Unique IDentifier, \url{https://tools.ietf.org/html/rfc4122}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+occurrenceid\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+identifier for the occurrence, \url{http://rs.tdwg.org/dwc/terms/occurrenceID}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+catalognumber\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+identifier for the record within the collection, \url{http://rs.tdwg.org/dwc/terms/catalogNumber}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+family\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+scientific name of the family, \url{http://rs.tdwg.org/dwc/terms/family}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+genus\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+scientific name of the genus, \url{http://rs.tdwg.org/dwc/terms/genus}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+scientificname\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+scientific name, \url{http://rs.tdwg.org/dwc/terms/scientificName}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+country\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+country, \url{http://rs.tdwg.org/dwc/terms/country}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+stateprovince\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+name of the next smaller administrative region than country, \url{http://rs.tdwg.org/dwc/terms/stateProvince}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+geopoint.lon\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+equivalent to decimalLongitude, \url{http://rs.tdwg.org/dwc/terms/decimalLongitude}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+geopoint.lat\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+equivalent to decimalLatitude,\url{http://rs.tdwg.org/dwc/terms/decimalLatitude}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+datecollected\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+equivalent to eventDate, \url{https://dwc.tdwg.org/terms/\#dwc:eventDate})\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+collector\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+equivalent to recordedBy, \url{http://rs.tdwg.org/dwc/terms/recordedBy}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+recordset\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+indicates the iDigBio recordset the observation belongs too\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{plot-the-records}{%
+\subsection*{Plot the records}\label{plot-the-records}}
+\addcontentsline{toc}{subsection}{Plot the records}
+
+Now that we have inspected the data frame, let's plot the records. We will use ggplot2 to create a simple plot.
+
+First, we need to download a basemap to plot our points on. Here I download a world map that is outlined and filled with the shade ``gray50'' using the function borders which is from the package ggplot2.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{world \textless{}{-}}\StringTok{ }\KeywordTok{borders}\NormalTok{(}\DataTypeTok{database =} \StringTok{"world"}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"gray50"}\NormalTok{, }\DataTypeTok{fill =} \StringTok{"gray50"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Next, we are going to create a plot using the base map. We will add the points from the iDigBio\_SA data frame using the geom\_point function. For ggplot2, you have to indicate mapping aesthetics or mapping = aes(). Within this statement we include x = geopoint.lon, y = geopoint.lat) to indicate that the x coordinate should be the column containig longitude (geopoint.lon), and the y coordinate should be the column containing latitude (geopoint.lat). Finally, we indicate we want these points to be blue, or col = ``Blue'' .
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all\_plot \textless{}{-}}\StringTok{ }\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}
+\StringTok{            }\NormalTok{world }\OperatorTok{+}
+\StringTok{            }\KeywordTok{geom\_point}\NormalTok{(iDigBio\_SA, }
+                       \DataTypeTok{mapping =} \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ geopoint.lon, }\DataTypeTok{y =}\NormalTok{ geopoint.lat), }
+                       \DataTypeTok{col =} \StringTok{"Blue"}\NormalTok{)}
+\NormalTok{all\_plot}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{Intro2R-Bookdown_files/figure-latex/unnamed-chunk-31-1} \end{center}
+
+When you plot the occurrence records downloaded, you will notice points outside of the native range! \emph{Spartina alterniflora} is very invasive in California and other parts of the world.
+
+\textbf{Save as a jpg}: To save your map as an image file, you can easily run the following lines.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{jpeg}\NormalTok{(}\DataTypeTok{file=}\StringTok{"map\_spartina.jpeg"}\NormalTok{)}
+\NormalTok{all\_plot}
+\KeywordTok{dev.off}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{limiting-the-extent}{%
+\section{Limiting the extent}\label{limiting-the-extent}}
+
+What if you want to only download points for the species within the native extent? Then we would need to define a bounding box to restrict our query (as coded by rq) too.
+
+Hint: Use the \href{https://www.idigbio.org/portal/search}{iDigBio portal} to determine the coordinates for the corners of the bounding box of your region of interest.
+
+\begin{center}\includegraphics[width=0.7\linewidth]{img/BoundingBox2} \end{center}
+
+\hypertarget{set-the-search-criteria}{%
+\subsection*{Set the search criteria}\label{set-the-search-criteria}}
+\addcontentsline{toc}{subsection}{Set the search criteria}
+
+Here we will redefine the rq, or record query, to include a geo\_bounding\_box based on the iDigBio webportal - I limited the extent only to the native range.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rq\_input \textless{}{-}}\StringTok{ }\KeywordTok{list}\NormalTok{(}\StringTok{"scientificname"}\NormalTok{=}\StringTok{"Spartina alterniflora"}\NormalTok{,}
+                 \DataTypeTok{geopoint=}\KeywordTok{list}\NormalTok{( }\DataTypeTok{type=}\StringTok{"geo\_bounding\_box"}\NormalTok{,}
+                                \DataTypeTok{top\_left=}\KeywordTok{list}\NormalTok{(}\DataTypeTok{lon =} \FloatTok{{-}102.33}\NormalTok{, }\DataTypeTok{lat =} \FloatTok{46.64}\NormalTok{),}
+                                \DataTypeTok{bottom\_right=}\KeywordTok{list}\NormalTok{(}\DataTypeTok{lon =} \FloatTok{{-}55.33}\NormalTok{, }\DataTypeTok{lat =} \FloatTok{20.43}\NormalTok{) ) )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{iDigBio\_SA\_limited \textless{}{-}}\StringTok{ }\KeywordTok{idig\_search\_records}\NormalTok{(}\DataTypeTok{rq=}\NormalTok{rq\_input)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{plot-the-records-1}{%
+\subsection*{Plot the records}\label{plot-the-records-1}}
+\addcontentsline{toc}{subsection}{Plot the records}
+
+Similar to before, we will use ggplot2 to plot our points. These records only include points within the desired extent!
+
+Since the native range is only in the USA, I downloaded a USA map that is outlined and filled with the shade ``gray50'' using the function borders which is from the package ggplot2.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{USA \textless{}{-}}\StringTok{ }\KeywordTok{borders}\NormalTok{(}\DataTypeTok{database =} \StringTok{"usa"}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"gray50"}\NormalTok{, }\DataTypeTok{fill =} \StringTok{"gray50"}\NormalTok{) }
+\NormalTok{limited\_plot \textless{}{-}}\StringTok{ }\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}
+\StringTok{                }\NormalTok{USA }\OperatorTok{+}
+\StringTok{                }\KeywordTok{geom\_point}\NormalTok{(iDigBio\_SA,}
+                           \DataTypeTok{mapping =} \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ geopoint.lon, }\DataTypeTok{y =}\NormalTok{ geopoint.lat), }
+                           \DataTypeTok{col =} \StringTok{"Blue"}\NormalTok{) }\OperatorTok{+}
+\StringTok{                }\KeywordTok{coord\_map}\NormalTok{(}\DataTypeTok{xlim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{{-}}\DecValTok{60}\NormalTok{,}\OperatorTok{{-}}\DecValTok{105}\NormalTok{), }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{50}\NormalTok{))}
+            
+\NormalTok{limited\_plot}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{Intro2R-Bookdown_files/figure-latex/unnamed-chunk-36-1} \end{center}
+
+\textbf{Congrats! You have made it through all the activities, you should now be able to answer all the questions in the assessment!}
+
+\hypertarget{assessement}{%
+\chapter{Assessement}\label{assessement}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  True or False: The best way to keep your files organized for analysis is to indicate and set the working directory in each R script.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# New Analysis Script }
+\KeywordTok{setwd}\NormalTok{(}\StringTok{"Desktop/CURE/Analysis/Data"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Fill in the operator used to create an object named ``age'' which contains the values 18, 19, 20, and 17:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{age [\_\_\_\_\_] }\KeywordTok{c}\NormalTok{(}\DecValTok{18}\NormalTok{, }\DecValTok{19}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{17}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  I have a vector that includes many different types of berries in a specific order (see below). How do I subset just ``strawberries'' from the object?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{berries \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"strawberries"}\NormalTok{, }\StringTok{"blueberries"}\NormalTok{, }\StringTok{"raspberries"}\NormalTok{, }\StringTok{"blackberries"}\NormalTok{, }\StringTok{"cranberries"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+A. berries{[}1{]}\\
+B. berries(1)\\
+C. berries{[},1{]}\\
+D. berries{[}c(2){]}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  After reading a data frame into R using the following code, I want to explore my data.\\
+  mydata \textless- read.csv(``data/mydata.csv'').
+\end{enumerate}
+
+Match the following functions with questions about the data:
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Functions & Questions\tabularnewline
+\midrule
+\endhead
+str(mydata) & What is the first row in my data frame?\tabularnewline
+head(mydata) & What is the class of the row named row1?\tabularnewline
+view(mydata) & What are the first few rows in the data frame?\tabularnewline
+mydata{[},1{]} & What is in the row named row1?\tabularnewline
+``mydata\$row1'' & What is the data frames structure?\tabularnewline
+``class(mydata\$row1)'' & What does my data frame look like?\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  \textbf{Activity}:\\
+  Download specimen data for a species of interest using the iDigBio API in R following the steps learned in section 4.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  What species did you download records for?
+\item
+  How many observations were in this record set?
+\item
+  Plot a map of these records and save this plot as a jpg.
+\end{enumerate}
+
+  \bibliography{book.bib,packages.bib}
+
+\end{document}

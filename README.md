@@ -1,1 +1,1 @@
-# BLUE-Intro2RwithBiodiversityData
+Students will learn R basics while downloading biodiversity data from multiple data repositories. This module will walk students through installing R, navigating R, reproducibility in R, and using R to download biodiversity data.
