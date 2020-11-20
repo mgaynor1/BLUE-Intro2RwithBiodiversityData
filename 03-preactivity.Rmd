@@ -48,18 +48,19 @@ knitr::include_graphics(rep('img/Rscript.png'))
 
 R Scripts are used to document the code you use in your project. These scripts can be used as a reference for yourself and allow others to reproduce your analysis. Learn more about running code from R Scripts in section 3.4.
 
-------------------------------------------------------------------------
+-------------
+
 >
-> **Naming R Scripts**\
+> **Naming R Scripts**    
 >
-> -   Make sure you R Scripts file names are meaningful and end in .R.
+> -   Make sure you R Scripts file names are meaningful and end in .R.     
 >
-> -   Avoid using special characters in file names. Instead use numbers, letters, dashes (-), and underscores (\_).
+> -   Avoid using special characters in file names. Instead use numbers, letters, dashes (-), and underscores (\_).     
 >
-> -   If files should be run in a particular order, prefix them with numbers. For example, 01\_setup.R.
+> -   If files should be run in a particular order, prefix them with numbers. For example, 01\_setup.R.      
 >
 
-------------------------------------------------------------------------
+---------
 
 ## Important Terms
 

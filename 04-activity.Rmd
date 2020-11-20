@@ -32,6 +32,7 @@ Here is an example of a plant media record:
 ```{r echo=FALSE, fig.align = 'center', fig.width=5, out.width = '70%'}
 knitr::include_graphics(rep('img/spartina_idigbio.jpg'))
 ```
+     
 #### Application Programming Interface  
 An API, or Application Programming Interface, allows a user to interact with a system that contains data. In this case, we are interacting with iDigBio, a biodiversity data aggregator. Even when we use the web portal for iDigBio, we are still interacting with the API. Here we will learn how to interact with the iDigBio API using R.  
 ```{r echo=FALSE, fig.align = 'center', fig.width=5, out.width = '70%'}
@@ -119,7 +120,7 @@ world <- borders(database = "world", colour = "gray50", fill = "gray50")
 ```
 
 
-Next, we are going to create a plot using the base map. We will add the points from the <kbd>iDigBio_SA</kbd> data frame using the  <kbd>geom_point</kbd> function. For ggplot2, you have to indicate mapping aesthetics or <kbd> mapping = aes()</kbd>. Within this statement we include <kbd> x = geopoint.lon, y = geopoint.lat) </kdb> to indicate that the x coordinate should be the column containig longitude (geopoint.lon), and the y coordinate should be the column containing latitude (geopoint.lat). Finally, we indicate we want these points to be blue, or <kdb> col = "Blue" </kdb>.   
+Next, we are going to create a plot using the base map. We will add the points from the <kbd>iDigBio_SA</kbd> data frame using the  <kbd>geom_point</kbd> function. For ggplot2, you have to indicate mapping aesthetics or <kbd> mapping = aes()</kbd>. Within this statement we include <kbd> x = geopoint.lon, y = geopoint.lat) </kbd> to indicate that the x coordinate should be the column containig longitude (geopoint.lon), and the y coordinate should be the column containing latitude (geopoint.lat). Finally, we indicate we want these points to be blue, or <kdb> col = "Blue" </kdb>.   
 ```{r message=FALSE, warning=FALSE, fig.align = 'center', fig.width=6}
 all_plot <- ggplot() +
             world +

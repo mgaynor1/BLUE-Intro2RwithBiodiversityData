@@ -237,12 +237,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 These specimen include mostly plants and animals. While media records include mostly plant specimen.
 <img src="img/idigbio2.png" width="70%" style="display: block; margin: auto;" />
 Here is an example of a plant media record:
-<img src="img/spartina_idigbio.jpg" width="70%" style="display: block; margin: auto;" />
-#### Application Programming Interface<br />
-An API, or Application Programming Interface, allows a user to interact with a system that contains data. In this case, we are interacting with iDigBio, a biodiversity data aggregator. Even when we use the web portal for iDigBio, we are still interacting with the API. Here we will learn how to interact with the iDigBio API using R.<br />
+<img src="img/spartina_idigbio.jpg" width="70%" style="display: block; margin: auto;" /></p>
+<div id="application-programming-interface" class="section level4" number="4.2.1.1">
+<h4><span class="header-section-number">4.2.1.1</span> Application Programming Interface</h4>
+<p>An API, or Application Programming Interface, allows a user to interact with a system that contains data. In this case, we are interacting with iDigBio, a biodiversity data aggregator. Even when we use the web portal for iDigBio, we are still interacting with the API. Here we will learn how to interact with the iDigBio API using R.<br />
 <img src="img/API.jpg" width="70%" style="display: block; margin: auto;" /></p>
-<div id="spartina-alterniflora" class="section level4" number="4.2.1.1">
-<h4><span class="header-section-number">4.2.1.1</span> <em>Spartina alterniflora</em></h4>
+</div>
+<div id="spartina-alterniflora" class="section level4" number="4.2.1.2">
+<h4><span class="header-section-number">4.2.1.2</span> <em>Spartina alterniflora</em></h4>
 <p><em>Spartina alterniflora</em>, smooth cordgrass, grows along shorelines throughout both the Atlantic and Gulf coasts of North America. In its native range, it is used in ecosystem restoration due to its extensive rooting capabilities.</p>
 <p><img src="img/spartina.jpeg" width="50%" style="display: block; margin: auto;" /></p>
 </div>
@@ -289,10 +291,9 @@ To determine this, we can use the <kbd>ncol</kbd> function to see the <strong>n<
 <p><strong>What columns does this data frame include?</strong><br />
 To print the <strong>col</strong>umns <strong>names</strong>, we can use the <kbd>colname</kbd> function.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="class-activity.html#cb19-1"></a><span class="kw">colnames</span>(iDigBio_SA)</span></code></pre></div>
-<pre><code>##  [1] &quot;uuid&quot;           &quot;occurrenceid&quot;   &quot;catalognumber&quot; 
-##  [4] &quot;family&quot;         &quot;genus&quot;          &quot;scientificname&quot;
-##  [7] &quot;country&quot;        &quot;stateprovince&quot;  &quot;geopoint.lon&quot;  
-## [10] &quot;geopoint.lat&quot;   &quot;datecollected&quot;  &quot;collector&quot;     
+<pre><code>##  [1] &quot;uuid&quot;           &quot;occurrenceid&quot;   &quot;catalognumber&quot;  &quot;family&quot;        
+##  [5] &quot;genus&quot;          &quot;scientificname&quot; &quot;country&quot;        &quot;stateprovince&quot; 
+##  [9] &quot;geopoint.lon&quot;   &quot;geopoint.lat&quot;   &quot;datecollected&quot;  &quot;collector&quot;     
 ## [13] &quot;recordset&quot;</code></pre>
 <p>Based on <a href="https://dwc.tdwg.org/">Darwin Core Standards</a>, we know what each of these columns means.</p>
 <table>
@@ -367,7 +368,7 @@ To print the <strong>col</strong>umns <strong>names</strong>, we can use the <kb
 <p>Now that we have inspected the data frame, let’s plot the records. We will use <kbd>ggplot2</kbd> to create a simple plot.</p>
 <p>First, we need to download a basemap to plot our points on. Here I download a world map that is outlined and filled with the shade “gray50” using the function <kbd>borders</kbd> which is from the package <kbd>ggplot2</kbd>.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="class-activity.html#cb21-1"></a>world &lt;-<span class="st"> </span><span class="kw">borders</span>(<span class="dt">database =</span> <span class="st">&quot;world&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;gray50&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;gray50&quot;</span>)</span></code></pre></div>
-<p>Next, we are going to create a plot using the base map. We will add the points from the <kbd>iDigBio_SA</kbd> data frame using the <kbd>geom_point</kbd> function. For ggplot2, you have to indicate mapping aesthetics or <kbd> mapping = aes()</kbd>. Within this statement we include <kbd> x = geopoint.lon, y = geopoint.lat) </kdb> to indicate that the x coordinate should be the column containig longitude (geopoint.lon), and the y coordinate should be the column containing latitude (geopoint.lat). Finally, we indicate we want these points to be blue, or <kdb> col = “Blue” </kdb>.</p>
+<p>Next, we are going to create a plot using the base map. We will add the points from the <kbd>iDigBio_SA</kbd> data frame using the <kbd>geom_point</kbd> function. For ggplot2, you have to indicate mapping aesthetics or <kbd> mapping = aes()</kbd>. Within this statement we include <kbd> x = geopoint.lon, y = geopoint.lat) </kbd> to indicate that the x coordinate should be the column containig longitude (geopoint.lon), and the y coordinate should be the column containing latitude (geopoint.lat). Finally, we indicate we want these points to be blue, or <kdb> col = “Blue” </kdb>.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="class-activity.html#cb22-1"></a>all_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
 <span id="cb22-2"><a href="class-activity.html#cb22-2"></a><span class="st">            </span>world <span class="op">+</span></span>
 <span id="cb22-3"><a href="class-activity.html#cb22-3"></a><span class="st">            </span><span class="kw">geom_point</span>(iDigBio_SA, </span>

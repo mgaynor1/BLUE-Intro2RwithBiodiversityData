@@ -19,16 +19,16 @@
 \contentsline {section}{\numberline {3.3}Important Terms}{16}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Running Code}{18}{section.3.4}%
 \contentsline {section}{\numberline {3.5}Basic Troubleshooting}{18}{section.3.5}%
-\contentsline {subsection}{1. Read the error message}{18}{section*.6}%
+\contentsline {subsection}{1. Read the error message}{19}{section*.6}%
 \contentsline {subsection}{2. Google the error message}{19}{section*.7}%
 \contentsline {subsection}{3. Ask for help}{19}{section*.8}%
 \contentsline {subsection}{Where to ask for help?}{19}{section*.9}%
 \contentsline {section}{\numberline {3.6}Reproducibility}{19}{section.3.6}%
-\contentsline {subsection}{Hashtags}{19}{section*.10}%
+\contentsline {subsection}{Hashtags}{20}{section*.10}%
 \contentsline {subsection}{Titles}{20}{section*.11}%
 \contentsline {subsection}{Sections}{20}{section*.12}%
 \contentsline {section}{\numberline {3.7}Basic Script Example}{20}{section.3.7}%
-\contentsline {subsection}{Activity Goals}{20}{section*.13}%
+\contentsline {subsection}{Activity Goals}{21}{section*.13}%
 \contentsline {chapter}{\numberline {4}Class Activity}{23}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Learning Objective}{23}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Background information}{23}{section.4.2}%
